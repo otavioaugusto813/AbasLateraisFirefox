@@ -1,0 +1,201 @@
+
+
+
+/*  ------------------------------------------------------------------------------------------------------------------------- */
+
+
+/* ESCONDER LOGO TREE STYLE TAB */
+
+/* Hide splitter, when using Tree Style Tab. */
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] + #sidebar-splitter {
+  display: none !important;
+}
+/* Hide sidebar header, when using Tree Style Tab. */
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
+  visibility: collapse;
+}
+    
+
+
+/*  ------------------------------------------------------------------------------------------------------------------------- */
+
+
+#sidebar-box{
+  --sidebar-background-color: var(--toolbar-bgcolor) !important;
+  --sidebar-transition-delay: 250ms;
+  --sidebar-width: 48px;
+  --sidebar-hover-width: calc(calc(calc(var(--sidebar-width) - 0.65em) * 6) + 0.65em);
+  /* If you want to adjust sidebar-hover-width, change the default number multiplied here (which is 6 - follows the number of icon-only pinned tabs per row) */
+  --autohide-sidebar-delay: 150ms; /* Delay before hiding the sidebar */
+  position: relative;
+  min-width: var(--sidebar-width) !important;
+  width: var(--sidebar-width) !important;
+  max-width: var(--sidebar-width) !important;
+  margin-top: -1px;
+  z-index:1;
+}
+
+#sidebar-title { 
+  display: none !important;
+}
+#sidebar-box[positionend]{ 
+  direction: rtl;
+}
+#sidebar-box[positionend] > *{ 
+  direction: ltr;
+}
+
+#sidebar-box[positionend]:-moz-locale-dir(rtl){ 
+  direction: ltr;
+}
+#sidebar-box[positionend]:-moz-locale-dir(rtl) > *{ 
+  direction: rtl;
+}
+
+#sidebar-splitter{ 
+  display: none !important;
+}
+
+#sidebar,
+#sidebar-header{
+  transition: box-shadow 0.1s linear, min-width 25ms linear var(--autohide-sidebar-delay) !important;
+  min-width: var(--sidebar-width) !important;
+  will-change:  min-width !important;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.3) !important;
+  border-right: 1px solid var(--chrome-content-separator-color) !important;
+}
+
+#sidebar-box:hover > #sidebar,
+#sidebar-box:hover > #sidebar-header{
+  transition: box-shadow 0.1s linear, min-width 50ms linear var(--autohide-sidebar-delay) !important;
+  transition-delay: var(--sidebar-transition-delay) !important;
+  min-width: var(--sidebar-hover-width) !important;
+  box-shadow: 3px 8px 6px rgba(0, 0, 0, 0.25) !important;
+  border-right: 1px solid var(--chrome-content-separator-color) !important;
+}
+
+#sidebar-box {
+  box-shadow: 0 20px 0 rgba(0, 0, 0, 0.25) !important;
+  transition: box-shadow 0.1s linear !important;
+}
+
+#sidebar-box:hover {	
+  box-shadow: 3px 16px 6px rgba(0, 0, 0, 0.2) !important;
+}
+
+.sidebar-panel{
+  background-color: transparent !important;
+  color: var(--newtab-text-primary-color) !important;
+}
+
+.sidebar-panel #search-box{
+  -moz-appearance: none !important;
+  background-color: rgba(249,249,250,0.1) !important; 
+  color: inherit !important;
+}
+
+/* Add sidebar background */
+
+#sidebar,
+#sidebar-header {
+  background-image: var(--lwt-additional-images);
+  background-size: auto;
+  background-repeat: no-repeat;
+}
+
+#sidebar {
+  background-color: var(--lwt-accent-color) !important;
+}
+
+#sidebar-header{
+  height: 40px !important;
+  font-size: inherit !important;
+  background-color: var(--toolbar-bgcolor) !important;
+  border-bottom: none !important;
+}
+
+#sidebar-box:not([positionend]):hover ~ #appcontent #statuspanel{ inset-inline: auto 0px !important; }
+#sidebar-box:not([positionend]):hover ~ #appcontent #statuspanel-label{ margin-inline: 0px !important; border-left-style: solid !important; }
+
+
+#browser {
+  --sidebar-border-color: var(--chrome-content-separator-color) !important;
+}
+
+#sidebar-switcher-target {
+  padding: 2px 0px !important;
+}
+
+#sidebar-icon{
+  -moz-box-ordinal-group: 0;
+  margin: 2px 6px !important; 
+  min-height: 16px !important;
+  min-width: 16px !important;
+}
+
+#sidebar-box #sidebar-close,
+#sidebar-box #sidebar-switcher-arrow {
+  transition: visibility 25ms linear var(--autohide-sidebar-delay) !important;
+  will-change: visibility !important;
+  visibility: collapse !important;
+}
+
+#sidebar-box:hover #sidebar-close,
+#sidebar-box:hover #sidebar-switcher-arrow {
+  transition: visibility 50ms linear var(--autohide-sidebar-delay) !important;
+  transition-delay: var(--sidebar-transition-delay) !important;
+  visibility: visible !important;
+}
+
+#sidebar-header::after{
+  content:"";
+  display: flex;
+  position: absolute;
+  top: 0;
+  height: 1px;
+  width: calc(var(--sidebar-width) - 16px) !important;
+  background-color: var(--chrome-content-separator-color);
+  transition: width 25ms linear var(--autohide-sidebar-delay) !important;
+  will-change: width !important;
+}
+
+#sidebar-box:hover #sidebar-header::after{
+  transition: width 25ms linear var(--autohide-sidebar-delay) !important;
+  transition-delay: var(--sidebar-transition-delay) !important;
+  width: calc(var(--sidebar-hover-width) - 16px) !important;
+}
+
+
+
+
+
+
+
+
+
+
+/*  ------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+
+
+
+/* hides the native tabs without changing height */
+#main-window[tabsintitlebar="true"]:not([extradragspace="true"]) #TabsToolbar > .toolbar-items {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* adjust toolbar position to make use of title bar whitespace left after hiding tabs */
+#nav-bar {
+  margin-top: -36px;
+	margin-right: 182px;
+	margin-bottom: 0px;
+}
+
+/* hides the tabs and changes the height of title bar */
+#tabbrowser-tabs {
+  visibility: collapse !important;
+} 
